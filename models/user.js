@@ -15,7 +15,17 @@ const UserSchema = new mongoose.Schema({
   },
   phone: {
     type: Number
+  },
+  usertype:{
+    /*There are three user types Admin, customer, delivery 
+    1- Admin,
+    2- customer,
+    3- delivery
+    */
+    type: Number,
+    required: true
   }
+
 });
 
 module.exports = User = mongoose.model('user', UserSchema);
