@@ -13,6 +13,7 @@ app.use(express.json());
 
 app.use('/api/v1', require('./routes/userRoute'));
 app.use('/api/v2', require('./routes/groceryRoute'));
+app.use('/api/v3', require('./routes/groceryCateoryRoute'));
 
 app.get('/', (req, res) => res.send('API Running on heroku'));
 
