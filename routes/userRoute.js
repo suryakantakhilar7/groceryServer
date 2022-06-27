@@ -38,4 +38,16 @@ router.get("/all/users", async (req, res) => {
   });
 });
 
+//update profile
+router.put("/user/update", async (req, res) => {
+  try {
+    var x = await User.where({ email: req.body.email }).updateOne({
+      $set: req.body,
+    });
+    res.json({ success: 200, data: x });
+  } catch (e) {
+    res.json({ success: 500 });
+  }
+});
+
   module.exports = router;
