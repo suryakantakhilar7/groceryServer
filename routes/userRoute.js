@@ -55,8 +55,10 @@ router.post("/user/checktoken", async (req, res) => {
 })
 //check user during Logging
 router.post("/user/logging", async (req, res) => {
-
   var user = await User.findOne({ email: req.body.email });
+  if(!user.hasOwnProperty("password")){
+    res.json({ success:403, message:"User Not Found" });
+  }
   const matchPassword = await bcrypt.compare(req.body.password, user.password);
   if (matchPassword) {
     const payload = {
@@ -75,6 +77,8 @@ router.post("/user/logging", async (req, res) => {
         res.json({ token, payload });
       }
     );
+  }else{
+    res.json({ success:403, message:"Incorrect Password" });
   }
 })
 
