@@ -57,7 +57,6 @@ router.post("/user/checktoken", async (req, res) => {
 router.post("/user/logging", async (req, res) => {
   try{
   var user = await User.findOne({ email: req.body.email });
-  console.log(user);
   if(!user){
     res.json({ success:403, message:"User Not Found" });
   }
@@ -65,9 +64,9 @@ router.post("/user/logging", async (req, res) => {
   if (matchPassword) {
     const payload = {
       user: {
-        id: doc.id,
-        email:doc.email,
-        name:doc.name
+        id: user._id,
+        email:user.email,
+        name:user.name
       }
     };
     jwt.sign(
