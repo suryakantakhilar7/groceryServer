@@ -55,8 +55,10 @@ router.post("/user/checktoken", async (req, res) => {
 })
 //check user during Logging
 router.post("/user/logging", async (req, res) => {
+  try{
   var user = await User.findOne({ email: req.body.email });
-  if(!user.hasOwnProperty("password")){
+  console.log(user);
+  if(!user){
     res.json({ success:403, message:"User Not Found" });
   }
   const matchPassword = await bcrypt.compare(req.body.password, user.password);
@@ -80,6 +82,9 @@ router.post("/user/logging", async (req, res) => {
   }else{
     res.json({ success:403, message:"Incorrect Password" });
   }
+}catch(e){
+  console.log(e.message)
+}
 })
 
 //get single user details
