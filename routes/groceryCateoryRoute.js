@@ -17,7 +17,7 @@ router.post("/gcategory/new", async (req, res) => {
 //get All grocey Items
 router.get("/gcategories", async (req, res) => {
     try {
-        await GroceryCategory.find({ active: true }, (err, data) => {
+        await GroceryCategory.find({}, (err, data) => {
             if (err) {
                 console.log(err);
             } else {
