@@ -5,12 +5,13 @@ const Grocery = require("../models/groceryItems")
 
 //Add new Grocery Item
 router.post("/grocery/new", async (req, res) => {
-  const { name, grocerytype, price, unit } = req.body;
+  const { name, grocerytype, price, unit, instock } = req.body;
   user = new Grocery({
     name,
     grocerytype,
     price,
-    unit
+    unit,
+    instock
   });
   var new_grocery = await user.save();
   res.json({ Success: 200, data: new_grocery });

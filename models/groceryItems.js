@@ -15,6 +15,10 @@ const GrocerySchema = new mongoose.Schema({
   },
   unit:{
     type:String
+  },
+  instock:{
+    type: Boolean,
+    required:true,
   }
 
 });
