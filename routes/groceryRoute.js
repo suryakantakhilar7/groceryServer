@@ -40,7 +40,7 @@ router.get("/groceries", async (req, res) => {
 });
 
 //update grocery item
-router.put("/user/update", async (req, res) => {
+router.put("/grocery/update", async (req, res) => {
   try {
     var x = await Grocery.where({ _id: req.body._id }).updateOne({
       $set: req.body,
